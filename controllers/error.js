@@ -1,4 +1,4 @@
-const express=require('express');
+import express from "express";
 
 
 exports.get404=(req,res,next)=>{
