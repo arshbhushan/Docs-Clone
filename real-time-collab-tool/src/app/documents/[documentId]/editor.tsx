@@ -1,13 +1,13 @@
 "use client"; //as server components are static[won't allow the usage of hooks] it will not let us use the editor thats why we are using "use client".
-import { useEditor, EditorContent } from '@tiptap/react';
-import StarterKit from "@tiptap/starter-kit";
-import TaskItem from '@tiptap/extension-task-item';
-import TaskList from '@tiptap/extension-task-list';
+import { useEditor, EditorContent } from '@tiptap/react'
+import StarterKit from "@tiptap/starter-kit"
+import TaskItem from '@tiptap/extension-task-item'
+import TaskList from '@tiptap/extension-task-list'
 import Table from '@tiptap/extension-table'
 import TableCell from '@tiptap/extension-table-cell'
 import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
-
+import Image from '@tiptap/extension-image'
 export const Editor = () => {
     const editor = useEditor({
         editorProps:{
@@ -18,6 +18,7 @@ export const Editor = () => {
         },
         extensions: [
             StarterKit,
+            Image,
             Table,
             TableCell,
             TableHeader,
