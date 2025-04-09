@@ -1,5 +1,5 @@
 "use client";
-import { LucideIcon, Undo2Icon, Redo2Icon } from "lucide-react";
+import { LucideIcon, Undo2Icon, Redo2Icon, PrinterIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
@@ -44,6 +44,11 @@ export const Toolbar=()=>{
                 label: "Redo",
                 icon: Redo2Icon,
                 onClick: ()=>editor?.chain().focus().redo().run(),
+            },
+            {
+                label: "Print",
+                icon: PrinterIcon,
+                onClick: ()=>window.print(),
             }
         ]
     ];
