@@ -79,9 +79,6 @@ export const Toolbar=()=>{
             <Separator orientation="vertical" className="h-6 bg-neutral-300"/>
             {/*TODO: Font size */}
             <Separator orientation="vertical" className="h-6 bg-neutral-300"/>
-            {sections[1].map((item)=>(
-                <ToolbarButton key={item.label} {...item} />
-            ))}
         </div>
     )
 }
