@@ -1,5 +1,5 @@
 "use client";
-import { LucideIcon, Undo2Icon, Redo2Icon, PrinterIcon, SpellCheckIcon, BoldIcon } from "lucide-react";
+import { LucideIcon, Undo2Icon, Redo2Icon, PrinterIcon, SpellCheckIcon, BoldIcon, ItalicIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
@@ -62,7 +62,15 @@ export const Toolbar=()=>{
             {
                 label: "Bold",
                 icon: BoldIcon,
+                isActive: editor?.isActive("bold"),
                 onClick: ()=> editor?.chain().focus().toggleBold().run(),
+
+            },
+            {
+                label: "Italic",
+                icon: ItalicIcon,
+                isActive: editor?.isActive("italic"),
+                onClick: ()=> editor?.chain().focus().toggleItalic().run(),
 
             }
         ]
@@ -79,10 +87,10 @@ export const Toolbar=()=>{
             <Separator orientation="vertical" className="h-6 bg-neutral-300"/>
             {/*TODO: Font size */}
             <Separator orientation="vertical" className="h-6 bg-neutral-300"/>
-            {/*TODO: Font size */}
-            <Separator orientation="vertical" className="h-6 bg-neutral-300"/>
-            {/*TODO: Font size */}
-            <Separator orientation="vertical" className="h-6 bg-neutral-300"/>
+
+            {sections[1].map((item)=>(
+                <ToolbarButton key={item.label} {...item} />
+            ))}
         </div>
     )
 }
