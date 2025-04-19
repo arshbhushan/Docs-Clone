@@ -1,5 +1,5 @@
 "use client";
-import { LucideIcon, Undo2Icon, Redo2Icon, PrinterIcon, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon, MessageSquareCodeIcon, MessageSquarePlusIcon, ListTodoIcon } from "lucide-react";
+import { LucideIcon, Undo2Icon, Redo2Icon, PrinterIcon, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon, MessageSquareCodeIcon, MessageSquarePlusIcon, ListTodoIcon, RemoveFormattingIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
@@ -94,6 +94,11 @@ export const Toolbar=()=>{
                 icon: ListTodoIcon,
                 onClick: ()=> editor?.chain().focus().toggleTaskList().run(),
                 isActive: editor?.isActive("taskList")
+            },
+            {
+                label: "Remove Formatting",
+                icon: RemoveFormattingIcon,
+                onClick: ()=> editor?.chain().focus().unsetAllMarks().run()
             }
         ]
     ];
