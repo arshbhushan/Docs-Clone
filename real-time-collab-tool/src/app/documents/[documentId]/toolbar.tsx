@@ -1,9 +1,10 @@
 "use client";
-import { LucideIcon, Undo2Icon, Redo2Icon, PrinterIcon, SpellCheckIcon, BoldIcon, ItalicIcon } from "lucide-react";
+import { LucideIcon, Undo2Icon, Redo2Icon, PrinterIcon, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
 import { Separator } from "@/components/ui/separator";
+import Underline from '@tiptap/extension-underline';
 
 interface ToolbarButtonProps{
     onClick?:()=>void;
@@ -74,6 +75,12 @@ export const Toolbar=()=>{
                 isActive: editor?.isActive("italic"),
                 onClick: ()=> editor?.chain().focus().toggleItalic().run(),
 
+            },
+            {
+                label: "Underline",
+                icon: UnderlineIcon,
+                isActive: editor?.isActive("underline"),
+                onClick: ()=> editor?.chain().focus().toggleUnderline().run(),
             }
         ]
     ];
