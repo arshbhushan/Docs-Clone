@@ -1,5 +1,5 @@
 "use client";
-import { LucideIcon, Undo2Icon, Redo2Icon, PrinterIcon, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
+import { LucideIcon, Undo2Icon, Redo2Icon, PrinterIcon, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon, MessageSquareCodeIcon, MessageSquarePlusIcon, ListTodoIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
@@ -82,6 +82,19 @@ export const Toolbar=()=>{
                 isActive: editor?.isActive("underline"),
                 onClick: ()=> editor?.chain().focus().toggleUnderline().run(),
             }
+        ],[
+            {
+                label: "Comment",
+                icon: MessageSquarePlusIcon,
+                onClick: ()=> console.log("TODO: Comment"),
+                isActive: false,  
+            },
+            {
+                label: "List",
+                icon: ListTodoIcon,
+                onClick: ()=> editor?.chain().focus().toggleTaskList().run(),
+                isActive: editor?.isActive("taskList")
+            }
         ]
     ];
     return(
@@ -98,6 +111,17 @@ export const Toolbar=()=>{
             <Separator orientation="vertical" className="h-6 bg-neutral-300"/>
 
             {sections[1].map((item)=>(
+                <ToolbarButton key={item.label} {...item} />
+            ))}
+           {/*TODO: Text Color*/} 
+           {/*TODO: Highlight Color*/} 
+            <Separator orientation="vertical" className="h-6 bg-neutral-300"/>
+           {/*TODO: Link*/} 
+           {/*TODO: Image*/} 
+           {/*TODO: Align*/} 
+           {/*TODO: Height*/} 
+           {/*TODO: List*/} 
+            {sections[2].map((item)=>(
                 <ToolbarButton key={item.label} {...item} />
             ))}
         </div>
