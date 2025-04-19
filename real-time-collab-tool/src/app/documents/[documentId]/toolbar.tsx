@@ -59,6 +59,8 @@ export const Toolbar=()=>{
                     editor?.view.dom.setAttribute("spellcheck", current === "false" ? "true" : "false")
                 }
             },
+        ],
+        [
             {
                 label: "Bold",
                 icon: BoldIcon,
