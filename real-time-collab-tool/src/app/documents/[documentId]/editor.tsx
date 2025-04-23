@@ -54,7 +54,11 @@ export const Editor = () => {
         extensions: [
             StarterKit,
             Color,
-            Link,
+            Link.configure({
+                openOnClick: false,
+                autolink: true,
+                defaultProtocol: "https"
+            }),
             Highlight.configure({
                 multicolor: true,
             }),  
