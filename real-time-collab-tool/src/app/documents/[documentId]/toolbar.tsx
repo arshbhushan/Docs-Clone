@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { type ColorResult, SketchPicker } from "react-color";
-import { LucideIcon, Undo2Icon, Redo2Icon, PrinterIcon, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon, MessageSquareCodeIcon, MessageSquarePlusIcon, ListTodoIcon, RemoveFormattingIcon, ChevronDownIcon, HighlighterIcon, Link2Icon, Upload, UploadIcon, SearchIcon } from "lucide-react";
+import { LucideIcon, Undo2Icon, Redo2Icon, PrinterIcon, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon, MessageSquareCodeIcon, MessageSquarePlusIcon, ListTodoIcon, RemoveFormattingIcon, ChevronDownIcon, HighlighterIcon, Link2Icon, Upload, UploadIcon, SearchIcon, ImageIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
@@ -69,7 +69,7 @@ const ImageButton = () => {
                     className=
                     "h-7 min-w-7 shrink-0 flex flex-col items-center justify-center rounded-sm hover:bg-neutral-200/80 px-1.5 overflow-hidden text-sm"
                 >
-                    <Link2Icon className="size-4" />
+                    <ImageIcon className="size-4" />
                 </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
@@ -100,12 +100,13 @@ const ImageButton = () => {
                     }
                 }}
                 />
-                </DialogContent>   
                 <DialogFooter>
                     <Button onClick={HandleImageUrlSubmit}>
                         Insert
                     </Button>
                 </DialogFooter>
+                </DialogContent>   
+
         </Dialog>
         </>
     )
