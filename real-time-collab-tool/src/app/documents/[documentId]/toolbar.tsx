@@ -53,7 +53,7 @@ const LinkButton = () =>{
                 onChange={(e)=>setValue(e.target.value)}
                 />
                 <Button onClick={()=>onChange(value)}>
-                    Apply
+                    Apply Link
                 </Button>
             </DropdownMenuContent>
         </DropdownMenu>
