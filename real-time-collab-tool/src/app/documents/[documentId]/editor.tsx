@@ -13,6 +13,7 @@ import TextStyle from '@tiptap/extension-text-style';
 import TableHeader from '@tiptap/extension-table-header';
 import TableRow from '@tiptap/extension-table-row';
 import Image from '@tiptap/extension-image';
+import TextAlign from '@tiptap/extension-text-align';
 import Underline from '@tiptap/extension-underline';
 import ImageResize from 'tiptap-extension-resize-image';
 import { useEditorStore } from '@/store/use-editor-store';
@@ -63,6 +64,7 @@ export const Editor = () => {
                 multicolor: true,
             }),  
             TextStyle,
+            TextAlign,
             Underline,
             FontFamily,
             Image,
