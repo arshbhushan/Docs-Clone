@@ -63,8 +63,10 @@ export const Editor = () => {
             Highlight.configure({
                 multicolor: true,
             }),  
+            TextAlign.configure({
+                types: ["heading", "paragraph"]
+            }),
             TextStyle,
-            TextAlign,
             Underline,
             FontFamily,
             Image,
