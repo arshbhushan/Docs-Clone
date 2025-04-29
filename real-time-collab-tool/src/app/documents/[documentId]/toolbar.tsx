@@ -31,6 +31,15 @@ import {
 import FontFamily from "@tiptap/extension-font-family";
 import TextAlign from "@tiptap/extension-text-align";
 
+const FontSizeButton = () => {
+    const { editor } = useEditorStore();
+
+    return (
+        <div>
+            Font Size
+        </div>
+    );
+}
 const ListButton = () => {
     const { editor } = useEditorStore();
     const lists = [
@@ -506,7 +515,7 @@ export const Toolbar = () => {
             <Separator orientation="vertical" className="h-6 bg-neutral-300" />
             <HeadingLevelButton />
             <Separator orientation="vertical" className="h-6 bg-neutral-300" />
-            {/*TODO: Font size */}
+            <FontSizeButton/>
             <Separator orientation="vertical" className="h-6 bg-neutral-300" />
 
             {sections[1].map((item) => (
