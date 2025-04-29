@@ -18,6 +18,8 @@ import Underline from '@tiptap/extension-underline';
 import ImageResize from 'tiptap-extension-resize-image';
 import { useEditorStore } from '@/store/use-editor-store';
 
+import { fontSizeExtension } from '@/extensions/font-size';
+
 export const Editor = () => {
     const {setEditor}= useEditorStore();
     
@@ -54,6 +56,7 @@ export const Editor = () => {
         },
         extensions: [
             StarterKit,
+            fontSizeExtension,
             Color,
             Link.configure({
                 openOnClick: false,
