@@ -254,7 +254,7 @@ const LinkButton = () => {
                     onChange={(e) => setValue(e.target.value)}
                 />
                 <Button onClick={() => onChange(value)}>
-                    Apply Link
+                    Apply
                 </Button>
             </DropdownMenuContent>
         </DropdownMenu>
