@@ -17,7 +17,16 @@ export const Ruler = () => {
                             className="absolute bottom-0"
                             style={{left: `${position}px`}}
                             >
-                                
+                             {
+                                marker % 10 === 0 &&(
+                                <>
+                                <div className="absolute bottom-0 w-[1px] h-2 bg-neutral-500 "/>
+                                <span className="absolute bottom-2 text-[10px] text-neutral-500 transform -translate-x-1/2">
+                                    {marker/10 +1}
+                                </span>
+                                </>
+                                )
+                             }   
 
                             </div>
                         )
