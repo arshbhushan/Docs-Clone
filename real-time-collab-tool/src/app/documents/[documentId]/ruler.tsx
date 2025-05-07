@@ -27,6 +27,9 @@ export const Ruler = () => {
                                 </>
                                 )
                              }   
+                             {marker % 5 === 0 && marker % 10 !== 0 &&(
+                                <div className="absolute bottom-0 w-[1px] h-1.5 bg-neutral-500"/>
+                             )}
 
                             </div>
                         )
