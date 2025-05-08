@@ -43,6 +43,6 @@ export const Ruler = () => {
 
                 </div>
             </div>
-            ruler</div>
+            </div>
     );
 };
