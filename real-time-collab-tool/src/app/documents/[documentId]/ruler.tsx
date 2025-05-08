@@ -46,3 +46,11 @@ export const Ruler = () => {
             </div>
     );
 };
+
+interface MarkerProps{
+    position: number;
+    isLeft: boolean;
+    isDragging: boolean;
+    onMouseDown: ()=>void;
+    onDoubleClick: ()=>void;
+}
