@@ -12,7 +12,7 @@ export const Ruler = () => {
                 <div className="absolute inset-x-0 bottom-0 h-full">
                     <div className="relative h-full w-[816px]">
                         {markers.map((marker) => {
-                            const position = (marker * 816) / 82;
+                            const position = (marker * 816) / 83;
                         return(
                             <div
                             key = {marker}
