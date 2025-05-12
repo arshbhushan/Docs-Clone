@@ -1,7 +1,23 @@
+import { useState, useRef } from "react";
 import { FaCaretDown } from "react-icons/fa";
 const markers = Array.from({ length: 83 }, (_, i) => i)
 
 export const Ruler = () => {
+    const  [leftMargin, setLeftMargin] = useState(56);
+    const  [rightMargin, setRightMargin] = useState(56);
+
+    const [isDraggingLeft, setIsDraggingLeft] = useState(false);
+    const [isDraggingRight, setIsDraggingRight] = useState(false);
+    const rulerRef = useRef<HTMLDivElement>(null);
+
+    const handleLeftMouseDown = ()=>{
+        setIsDraggingLeft(true);
+    }
+
+    const handleRightMouseDown = ()=>{
+        setIsDraggingRight(true);
+    }
+
     return (
         <div className="h-6 border-b border-gray-300 flex items-end relative select-none print:hidden">
             <div
