@@ -19,20 +19,23 @@ export const Ruler = () => {
     }
 
     const handleMouseMove = (e: React.MouseEvent) => {
+        const PAGE_WIDTH = 816;
+        const MINIMUM_SPACE = 100;
+
         if ((isDraggingLeft || isDraggingRight) && rulerRef.current) {
             const container = rulerRef.current.querySelector("#ruler-container");
             if (container) {
                 const containerRect = container.getBoundingClientRect();
                 const relativeX = e.clientX - containerRect.left;
-                const rawPosition = Math.max(0, Math.min(816, relativeX));
+                const rawPosition = Math.max(0, Math.min(PAGE_WIDTH, relativeX));
 
                 if (isDraggingLeft) {
-                    const maxLeftPosition = 816 - rightMargin - 100;
+                    const maxLeftPosition = PAGE_WIDTH - rightMargin - MINIMUM_SPACE;
                     const newLeftPosition = Math.min(rawPosition, maxLeftPosition);
                     setLeftMargin(newLeftPosition);
                 } else if (isDraggingRight) {
-                    const maxRightPosition = 816 - (leftMargin + 100);
-                    const newRightPosition = Math.max(816 - rawPosition, 0);
+                    const maxRightPosition = PAGE_WIDTH - (leftMargin + MINIMUM_SPACE);
+                    const newRightPosition = Math.max(PAGE_WIDTH - rawPosition, 0);
                     const constrainedRightPosition = Math.min(newRightPosition, maxRightPosition);
                     setRightMargin(constrainedRightPosition);
                 }
@@ -62,7 +65,7 @@ export const Ruler = () => {
             className="h-6 border-b border-gray-300 flex items-end relative select-none print:hidden">
             <div
                 id="ruler-container"
-                className="max-w-[816px] mx-auto w-full h-full relative"
+                className="max-w-[PAGE_WIDTHpx] mx-auto w-full h-full relative"
             >
                 <Marker
                     position={leftMargin}
