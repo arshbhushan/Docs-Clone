@@ -21,7 +21,14 @@ import { BsFilePdf } from "react-icons/bs";
 import { useEditorStore } from "@/store/use-editor-store";
 
 export const Navbar = () => {
-    const {editor} = useEditorStore();
+    const { editor } = useEditorStore();
+    const insertTable = ({ rows, cols }: { rows: number, cols: number }) => {
+        editor
+        ?.chain()
+        .focus()
+        .insertTable({rows, cols, withHeaderRow: false})
+        .run()
+    };
 
     return (
         <nav className="flex items-center justify-between">
@@ -92,11 +99,11 @@ export const Navbar = () => {
                                     Edit
                                 </MenubarTrigger>
                                 <MenubarContent>
-                                    <MenubarItem onClick={()=>editor?.chain().focus().undo().run()}>
+                                    <MenubarItem onClick={() => editor?.chain().focus().undo().run()}>
                                         <Undo2Icon className="size-4 mr-2" />
                                         Undo <MenubarShortcut>⌘+Z</MenubarShortcut>
                                     </MenubarItem>
-                                    <MenubarItem onClick={()=>editor?.chain().focus().redo().run()}>
+                                    <MenubarItem onClick={() => editor?.chain().focus().redo().run()}>
                                         <Redo2Icon className="size-4 mr-2" />
                                         Redo <MenubarShortcut>⌘+Y</MenubarShortcut>
                                     </MenubarItem>
@@ -110,19 +117,19 @@ export const Navbar = () => {
                                     <MenubarSub>
                                         <MenubarSubTrigger>Table</MenubarSubTrigger>
                                         <MenubarSubContent>
-                                            <MenubarItem>
+                                            <MenubarItem onClick={()=> insertTable({rows: 1, cols: 1})}>
                                                 1 x 1
                                             </MenubarItem>
-                                            <MenubarItem>
+                                            <MenubarItem onClick={()=> insertTable({rows: 2, cols: 1})}>
                                                 2 x 1
                                             </MenubarItem>
-                                            <MenubarItem>
+                                            <MenubarItem onClick={()=> insertTable({rows: 2, cols: 2})}>
                                                 2 x 2
                                             </MenubarItem>
-                                            <MenubarItem>
+                                            <MenubarItem onClick={()=> insertTable({rows: 3, cols: 3})}>
                                                 3 x 3
                                             </MenubarItem>
-                                            <MenubarItem>
+                                            <MenubarItem onClick={()=> insertTable({rows: 4, cols: 4})}>
                                                 4 x 4
                                             </MenubarItem>
                                         </MenubarSubContent>
@@ -159,7 +166,7 @@ export const Navbar = () => {
                                         </MenubarSubContent>
                                     </MenubarSub>
                                     <MenubarItem>
-                                        <RemoveFormattingIcon className="size-4 mr-2"/>
+                                        <RemoveFormattingIcon className="size-4 mr-2" />
                                         Clear Formating
                                     </MenubarItem>
                                 </MenubarContent>
