@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { SearchIcon } from "lucide-react";
+import { SearchIcon, XIcon } from "lucide-react";
 import { useRef, useState } from "react";
 
 export const SearchInput = () => {
@@ -35,6 +35,16 @@ export const SearchInput = () => {
                 >
                     <SearchIcon />
                 </Button>
+                {value && (
+                    <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 [&_svg]:size-5 rounded-full"
+                    >
+                        <XIcon />
+                    </Button>
+                )}
             </form>
         </div>
     );
