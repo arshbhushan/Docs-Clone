@@ -13,6 +13,11 @@ export const SearchInput = () => {
         setValue(e.target.value);
     }
 
+    const handleClear = () =>{
+        setValue("");
+        inputRef.current?.blur();
+    }
+
     return (
         <div className="flex-1 flex items-center justify-center">
             <form
@@ -37,6 +42,7 @@ export const SearchInput = () => {
                 </Button>
                 {value && (
                     <Button
+                        onClick={handleClear}
                         type="button"
                         variant="ghost"
                         size="icon"
