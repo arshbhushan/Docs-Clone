@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Navbar } from "./navbar";
+import { TemplatesGallery } from "./templates-galery";
 
 const Home = () => {
   return(
@@ -9,9 +10,7 @@ const Home = () => {
       </div>
 
       <div className="mt-16">
-      Click<Link href="/documents/123">
-      <span className="text-blue-500 underline">&nbsp;here&nbsp;</span>
-      </Link> to go to document IDs. These are currently static.
+        <TemplatesGallery/>
       </div>
     </div>
   )
