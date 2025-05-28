@@ -9,7 +9,7 @@ export const SearchInput = () => {
 
     const [search, setSearch] = useSearchParma();
 
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState(search);
 
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -19,6 +19,7 @@ export const SearchInput = () => {
 
     const handleClear = () => {
         setValue("");
+        setSearch("");
         inputRef.current?.blur();
     };
 
