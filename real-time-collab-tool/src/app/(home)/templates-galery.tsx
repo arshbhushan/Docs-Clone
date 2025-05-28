@@ -7,8 +7,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-
-const templates = [{ id: "blank", label: "Blank Document", imageUrl: "/logo.svg" }];
+import { templates } from "@/constants/templates";
 
 export const TemplatesGallery = () => {
     const isCreating = false;
