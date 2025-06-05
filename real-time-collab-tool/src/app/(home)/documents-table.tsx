@@ -38,8 +38,8 @@ export const DocumentTable = ({
                         <TableRow className="hover:bg-transparent border-none">
                             <TableHead>Name</TableHead>
                             <TableHead>&nbsp;</TableHead>
-                            <TableHead>Shared</TableHead>
-                            <TableHead>Created at</TableHead>
+                            <TableHead className="hidden md:flex">Shared</TableHead>
+                            <TableHead className="hidden md:flex">Created at</TableHead>
                         </TableRow>
                     </TableHeader>
                     {documents.length === 0 ? (
