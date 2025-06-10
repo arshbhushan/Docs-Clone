@@ -51,5 +51,3 @@ export const removeById = mutation({
         return await ctx.db.delete(args.id);
     },
 })
-
-//6:25:49
