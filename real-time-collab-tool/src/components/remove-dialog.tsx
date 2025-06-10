@@ -17,4 +17,15 @@ import {
   interface RemoveDialogProps{
     documentId: Id<"documents">;
     children: React.ReactNode
+  };
+
+  export const RemoveDialog = ({documentId, children}: RemoveDialogProps)=>{
+    return(
+        <AlertDialog>
+            <AlertDialogTrigger asChild>
+                {children}
+
+            </AlertDialogTrigger>
+        </AlertDialog>
+    )
   }
