@@ -13,7 +13,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-
+import { toast } from "sonner";
 import { Id } from "../../convex/_generated/dataModel";
 import { api } from "../../convex/_generated/api";
 
@@ -48,6 +48,8 @@ export const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
                                 e.stopPropagation();
                                 setIsRemoving(true);
                                 remove({ id: documentId })
+                                .catch(()=> toast.error("Something went worng."))
+                                .then(() => toast.success("Document removed successfully.")) 
                                     .finally(() => setIsRemoving(false));
                             }}
                         >
