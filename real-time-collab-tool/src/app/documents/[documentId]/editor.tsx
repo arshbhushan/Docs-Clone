@@ -8,6 +8,7 @@ import Table from '@tiptap/extension-table';
 import { Color } from '@tiptap/extension-color';
 import Link from '@tiptap/extension-link';
 import Highlight from '@tiptap/extension-highlight';
+import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 import TableCell from '@tiptap/extension-table-cell';
 import TextStyle from '@tiptap/extension-text-style';
 import TableHeader from '@tiptap/extension-table-header';
@@ -22,6 +23,7 @@ import { fontSizeExtension } from '@/extensions/font-size';
 import { Ruler } from './ruler';
 
 export const Editor = () => {
+    const liveblocks = useLiveblocksExtension();
     const {setEditor}= useEditorStore();
     
     const editor = useEditor({
@@ -58,6 +60,7 @@ export const Editor = () => {
         },
         extensions: [
             StarterKit,
+            liveblocks,
             LineHeightExtension.configure({
                 types: ["heading", "paragraph"],
                 defaultLineHeight: "normal"
