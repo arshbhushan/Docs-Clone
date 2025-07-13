@@ -6,12 +6,12 @@ import { ClerkProvider, SignIn, useAuth } from "@clerk/nextjs";
 import { ConvexReactClient, Authenticated, Unauthenticated, AuthLoading } from "convex/react";
 import { FullscreenLoader } from "./fullscreen-loader";
 
-const convex = new ConvexReactClient("URL");
+const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 
 export function ConvexClientProvider({ children }: { children: ReactNode }) {
     return (
-        <ClerkProvider publishableKey="Key">
+        <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
             <ConvexProviderWithClerk
                 useAuth={useAuth}
                 client={convex}
