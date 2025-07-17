@@ -28,15 +28,14 @@ export const get = query({
     args: { paginationOpts: paginationOptsValidator, search: v.optional(v.string()) },
     handler: async (ctx, { search, paginationOpts }) => {
         const user = await ctx.auth.getUserIdentity();
+
         if (!user) {
             throw new ConvexError("Unauthorized");
         }
-        const organizationId = (user.organization_id ?? undefined) as
-            | string
-            | undefined;
+        const organizationId = (user.organization_id ?? undefined) as string | undefined;
             //search with organization.
         if (search && organizationId) {
-            return await ctx.db
+            return ctx.db
                 .query("documents")
                 .withSearchIndex("search_title", (q) =>
                     q.search("title", search).eq("organizationId", organizationId)
@@ -86,7 +85,7 @@ export const removeById = mutation({
 
         const isOwner = document.ownerId === user.subject;
         const isOrganizationMember = 
-        (!! document.organizationId && document.organizationId === organizationId);
+        !!(document.organizationId && document.organizationId === organizationId);
 
         if (!isOwner && !isOrganizationMember) {
             throw new ConvexError("Unauthorized");
@@ -113,7 +112,7 @@ export const updateById = mutation({
 
         const isOwner = document.ownerId === user.subject;
         const isOrganizationMember = 
-        (!! document.organizationId && document.organizationId === organizationId);
+        !!(document.organizationId && document.organizationId === organizationId);
 
         if (!isOwner && ! isOrganizationMember) {
             throw new ConvexError("Unauthorized");
