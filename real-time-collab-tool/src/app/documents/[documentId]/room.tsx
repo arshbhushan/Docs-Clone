@@ -25,11 +25,11 @@ export function Room({ children }: { children: ReactNode }) {
         toast.error("Failed to fetch users")
       }
     },
-    []
+    [],
   );
   useEffect(() =>{
     fetchUsers();
-  }, [fetchUsers])
+  }, [fetchUsers]);
 
   return (
     <LiveblocksProvider 
@@ -48,10 +48,9 @@ export function Room({ children }: { children: ReactNode }) {
         return await response.json();
       }}
       resolveUsers= {({ userIds }) => {
-        return userIds.map((userId) => {
-          const user = users.find((user) => user.id === userId);
-          return user ? { name: user.name, avatar: user.avatar } : undefined;
-        });
+        return userIds.map(
+          (userId) => users.find((user) => user.id === userId) ?? undefined
+        );
       }}
       resolveMentionSuggestions={({text})=>{
         let filteredUsers =  users;
