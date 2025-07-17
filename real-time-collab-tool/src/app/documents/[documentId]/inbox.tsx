@@ -1,21 +1,21 @@
 "use client";
-import { BellIcon } from "lucide-react";
+import { BellIcon, Key } from "lucide-react";
 import { ClientSideSuspense } from "@liveblocks/react";
 import { useInboxNotifications } from "@liveblocks/react/suspense";
 import { InboxNotification, InboxNotificationList } from "@liveblocks/react-ui";
-import { Button  } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 
-export const Inbox= ()=>{
+export const Inbox = () => {
     return (
         <ClientSideSuspense fallback={null}>
-            <InboxMenu/>
+            <InboxMenu />
         </ClientSideSuspense>
     )
 };
 
 const InboxMenu = () => {
-     const {inboxNotifications} = useInboxNotifications();
+    const { inboxNotifications } = useInboxNotifications();
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -28,11 +28,16 @@ const InboxMenu = () => {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-auto">
-                {inboxNotifications.length> 0 ?(
+                {inboxNotifications.length > 0 ? (
                     <InboxNotificationList>
-
+                        {inboxNotifications.map((inboxNotification)=>(
+                            <InboxNotification
+                            key = {inboxNotification.id}
+                            inboxNotification={inboxNotification}
+                            />
+                        ))}
                     </InboxNotificationList>
-                ):(
+                ) : (
                     <div className="p-2 w-[400px] text-center text-sm text-muted-foreground">
                         No notifications
                     </div>
