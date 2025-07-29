@@ -47,7 +47,8 @@ export function Room({ children }: { children: ReactNode }) {
         return await response.json();
       }}
       resolveUsers={({ userIds }) => {
-        return userIds.map((userId) => users.find((user) => user.id === userId) ?? undefined);
+        return userIds.map(
+          (userId) => users.find((user) => user.id === userId) ?? undefined);
       }}
       resolveMentionSuggestions={({ text }) => {
         let filteredUsers = users;
@@ -56,7 +57,7 @@ export function Room({ children }: { children: ReactNode }) {
           filteredUsers = users.filter((user) =>
             user.name.toLowerCase().includes(text.toLowerCase())
           );
-        }
+        }        
         return filteredUsers.map((user) => user.id);
       }}
       resolveRoomsInfo={async ({ roomIds }) => {
