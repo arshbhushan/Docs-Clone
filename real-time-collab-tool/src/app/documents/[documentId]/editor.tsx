@@ -23,56 +23,57 @@ import { LineHeightExtension } from "@/extensions/line-height";
 import { fontSizeExtension } from '@/extensions/font-size';
 import { Ruler } from './ruler';
 import { Threads } from './threads';
+import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from '@/constants/margins';
 
-interface EditorProps{ 
+interface EditorProps {
     initialContent?: string | undefined;
 }
 
-export const Editor = ({initialContent}: EditorProps) => {
-    const leftMargin = useStorage((root)=>root.leftMargin);
-    const RightMargin = useStorage((root)=>root.rightMargin);
+export const Editor = ({ initialContent }: EditorProps) => {
+    const leftMargin = useStorage((root) => root.leftMargin) ?? LEFT_MARGIN_DEFAULT;
+    const RightMargin = useStorage((root) => root.rightMargin) ?? RIGHT_MARGIN_DEFAULT;
     const liveblocks = useLiveblocksExtension({
         initialContent,
-        offlineSupport_experimental:true,
+        offlineSupport_experimental: true,
     });
-    const {setEditor}= useEditorStore();
-    
+    const { setEditor } = useEditorStore();
+
     const editor = useEditor({
         immediatelyRender: false,
-        onCreate({editor}){
+        onCreate({ editor }) {
             setEditor(editor);
         },
-        onDestroy(){
+        onDestroy() {
             setEditor(null);
         },
-        onUpdate({editor}){
+        onUpdate({ editor }) {
             setEditor(editor)
         },
-        onSelectionUpdate({editor}){
+        onSelectionUpdate({ editor }) {
             setEditor(editor)
         },
-        onTransaction({editor}){
+        onTransaction({ editor }) {
             setEditor(editor)
         },
-        onFocus({editor}){
+        onFocus({ editor }) {
             setEditor(editor)
         },
-        onBlur({editor}){
+        onBlur({ editor }) {
             setEditor(editor)
         },
-        onContentError({editor}){
+        onContentError({ editor }) {
             setEditor(editor)
         },
-        editorProps:{
+        editorProps: {
             attributes: {
-                 style: `padding-left: ${leftMargin ?? 56}px; ${RightMargin ?? 56}px;` ,
-              class: "focus-outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] pt-10 pt-14 pb-10 cursor-text"
+                style: `padding-left: ${leftMargin}px; ${RightMargin}px;`,
+                class: "focus-outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] pt-10 pt-14 pb-10 cursor-text"
             },
         },
         extensions: [
             liveblocks,
             StarterKit.configure({
-                history:false,
+                history: false,
             }),
             LineHeightExtension.configure({
                 types: ["heading", "paragraph"],
@@ -87,7 +88,7 @@ export const Editor = ({initialContent}: EditorProps) => {
             }),
             Highlight.configure({
                 multicolor: true,
-            }),  
+            }),
             TextAlign.configure({
                 types: ["heading", "paragraph"]
             }),
@@ -108,10 +109,10 @@ export const Editor = ({initialContent}: EditorProps) => {
     })
     return (
         <div className="size-full overflow-x-auto bg-[#F9FBFD] px-4 print:p-0 print:bg-white print:overflow-visible">
-            <Ruler/>  
+            <Ruler />
             <div className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
-            <EditorContent editor={editor}/>
-            <Threads editor={editor} /> 
+                <EditorContent editor={editor} />
+                <Threads editor={editor} />
             </div>
         </div>
     );
