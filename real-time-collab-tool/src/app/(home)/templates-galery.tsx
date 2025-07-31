@@ -19,19 +19,19 @@ export const TemplatesGallery = () => {
     const create = useMutation(api.documents.create);
     const [isCreating, setIsCreating] = useState(false);
 
-    const onTemplateClick = (title:string, initialContent: string)=>{
+    const onTemplateClick = (title: string, initialContent: string) => {
         setIsCreating(true);
-        create({title, initialContent })
-        .catch(()=> toast.error("Something went worng."))
-        .then((documentId) =>{
-        toast.success("Document Created.")
-            router.push(`/documents/${documentId}`);
-        })
-        .finally(()=>{
-            setIsCreating(false);
-        });
+        create({ title, initialContent })
+            .catch(() => toast.error("Something went worng."))
+            .then((documentId) => {
+                toast.success("Document Created.")
+                router.push(`/documents/${documentId}`);
+            })
+            .finally(() => {
+                setIsCreating(false);
+            });
     };
-    
+
 
     return (
         <div className="bg-[#F1F3F4]">
@@ -52,7 +52,7 @@ export const TemplatesGallery = () => {
                                 >
                                     <button
                                         disabled={isCreating}
-                                        onClick={() => onTemplateClick(template.label, "")}
+                                        onClick={() => onTemplateClick(template.label, template.initialContent)}
                                         style={{
                                             backgroundImage: `url(${template.imageUrl})`,
                                             backgroundSize: "cover",
