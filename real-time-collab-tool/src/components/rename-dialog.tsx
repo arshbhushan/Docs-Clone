@@ -5,14 +5,12 @@ import { useState } from "react";
 import { useMutation } from "convex/react";
 import {
     Dialog,
-    DialogTrigger,
     DialogContent,
     DialogHeader,
     DialogTitle,
     DialogDescription,
     DialogFooter,
 } from "@/components/ui/dialog";
-import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Id } from "../../convex/_generated/dataModel";

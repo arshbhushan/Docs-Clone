@@ -6,15 +6,12 @@ import {
     BoldIcon,
     FileIcon,
     FileJsonIcon,
-    FilePenIcon,
     FilePlusIcon,
     FileTextIcon,
-    GlobeIcon,
     ItalicIcon,
     PrinterIcon,
     Redo2Icon,
     RemoveFormattingIcon,
-    Strikethrough,
     StrikethroughIcon,
     TextIcon,
     TrashIcon,
@@ -24,7 +21,7 @@ import {
 
 import { useMutation } from "convex/react";
 
-import { RenameDialog } from "@/components/rename-dialog";
+//import { RenameDialog } from "@/components/rename-dialog";
 import { RemoveDialog } from "@/components/remove-dialog";
 
 import {

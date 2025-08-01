@@ -17,7 +17,7 @@ import TableRow from '@tiptap/extension-table-row';
 import Image from '@tiptap/extension-image';
 import TextAlign from '@tiptap/extension-text-align';
 import Underline from '@tiptap/extension-underline';
-import ImageResize from 'tiptap-extension-resize-image';
+//import ImageResize from 'tiptap-extension-resize-image';
 import { useEditorStore } from '@/store/use-editor-store';
 import { LineHeightExtension } from "@/extensions/line-height";
 import { fontSizeExtension } from '@/extensions/font-size';
@@ -96,7 +96,7 @@ export const Editor = ({ initialContent }: EditorProps) => {
             Underline,
             FontFamily,
             Image,
-            ImageResize,
+            //ImageResize,
             Table,
             TableCell,
             TableHeader,
